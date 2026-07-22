@@ -15,6 +15,7 @@ interface HeroProps {
   /** Portrait path under /public. Defaults to placeholder. */
   portraitSrc?: string;
   portraitAlt?: string;
+  roleTarget?: string;
 }
 
 const fadeUp = {
@@ -32,6 +33,7 @@ export default function Hero({
   linkedin,
   portraitSrc = "/me/portrait-placeholder.svg",
   portraitAlt = "Sebastian Lumme",
+  roleTarget,
 }: HeroProps) {
   // Reduced motion: MotionConfig reducedMotion="user" in layout — no useReducedMotion branch (hydration).
 
@@ -85,6 +87,16 @@ export default function Hero({
           >
             {thesis}
           </motion.p>
+
+          {roleTarget && (
+            <motion.p
+              className="mt-3 max-w-xl text-sm text-tertiary"
+              {...fadeUp}
+              transition={{ delay: 0.15 }}
+            >
+              {roleTarget}
+            </motion.p>
+          )}
 
           {chips.length > 0 && (
             <motion.ul

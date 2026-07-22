@@ -7,14 +7,12 @@ import MotionSection, { revealItem } from "./MotionSection";
 interface ContactProps {
   email: string;
   linkedin: string;
-  twitter?: string;
   cvUrl: string;
 }
 
 export default function Contact({
   email,
   linkedin,
-  twitter,
   cvUrl,
 }: ContactProps) {
   return (
@@ -88,17 +86,6 @@ export default function Contact({
             LinkedIn
             <span className="sr-only"> (opens in new tab)</span>
           </a>
-          {twitter && (
-            <a
-              href={twitter}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex min-h-11 items-center rounded-pill border border-paper/25 px-5 py-2.5 text-sm text-paper/90 transition-colors hover:border-orange hover:text-orange focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange"
-            >
-              Twitter
-              <span className="sr-only"> (opens in new tab)</span>
-            </a>
-          )}
         </motion.div>
       </div>
     </MotionSection>

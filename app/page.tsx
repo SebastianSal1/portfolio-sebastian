@@ -32,6 +32,7 @@ export default async function Page() {
         linkedin="https://linkedin.com/in/sebastian-salutare/"
         portraitSrc="/me/portrait.webp"
         portraitAlt="Sebastian Lumme"
+        roleTarget="Industrial Engineering graduate exploring early-career opportunities across business strategy, analytics, commercial operations, and technology-enabled transformation."
       />
 
       <AboutSnapshot />

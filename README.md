@@ -34,9 +34,8 @@ See `.env.example`. Do not commit `.env.local`.
 │   ├── types.ts
 │   ├── media.ts         # local path helpers + text-led placeholders
 │   ├── work.ts          # MDX loader; filters missing /public files
-│   └── cloudinary.ts    # deprecated re-export of media helpers
 ├── public/
-│   ├── work/            # WebP screenshots + MEDIA_MANIFEST.md
+│   ├── work/            # WebP screenshots
 │   ├── cv.pdf
 │   └── fonts/
 └── next.config.mjs      # no remote image CDN required
