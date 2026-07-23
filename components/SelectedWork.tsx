@@ -1,9 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
 import SectionHeading from "./SectionHeading";
-import MotionSection, { revealItem } from "./MotionSection";
-import EvidenceBento from "./EvidenceBento";
+import MotionSection from "./MotionSection";
+import EvidenceEditorial from "./EvidenceEditorial";
 import DossierIndex from "./DossierIndex";
 import type { WorkCardData, WorkCategory } from "@/lib/types";
 
@@ -21,32 +20,32 @@ export default function SelectedWork({
 
   return (
     <MotionSection id="work" className="section-shell section-shell-lg">
-      <motion.div variants={revealItem}>
+      <div className="mb-12">
         <SectionHeading
           eyebrow="03 · Selected Evidence"
           title="Evidence that holds up"
         />
-        <p className="mb-10 max-w-2xl text-tertiary">
+        <p className="max-w-2xl text-secondary">
           Strongest proof first — strategy and analysis in markets and
           operations, with implementation depth where the work required building
           systems.
         </p>
-      </motion.div>
+      </div>
 
-      <motion.div variants={revealItem} className="mb-16 md:mb-24">
-        <EvidenceBento cards={featured} />
-      </motion.div>
+      <div className="mb-20 md:mb-28">
+        <EvidenceEditorial cards={featured} />
+      </div>
 
-      <motion.div variants={revealItem}>
+      <div className="border-t border-ink/10 pt-16">
         <DossierIndex
           eyebrow="04 · Field Work"
           title="Internships and applied roles"
           cards={internships}
           note="Full index — featured cases also appear above."
         />
-      </motion.div>
+      </div>
 
-      <motion.div variants={revealItem}>
+      <div className="mt-20 border-t border-ink/10 pt-16">
         <DossierIndex
           eyebrow="05 · Decision Archive"
           title="Competitions and case studies"
@@ -54,7 +53,7 @@ export default function SelectedWork({
           numbered
           note="Full index — featured cases also appear above."
         />
-      </motion.div>
+      </div>
     </MotionSection>
   );
 }

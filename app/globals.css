@@ -21,11 +21,29 @@
 
 @layer base {
   :root {
+    /* Typography scale — editorial hierarchy */
     --text-h1: clamp(2.5rem, 8vw, 7rem);
     --text-h2: clamp(1.75rem, 4vw, 3rem);
     --text-h3: clamp(1.25rem, 2vw, 1.75rem);
     --text-body: clamp(1rem, 1.2vw, 1.25rem);
-    --text-caption: clamp(0.75rem, 0.9vw, 0.9rem);
+    --text-caption: clamp(0.875rem, 1vw, 1rem);
+    
+    /* Section title — immediately visible (04 - xx, 05 - xx) */
+    --text-section-title: clamp(1.5rem, 3vw, 2.25rem);
+    --text-section-subtitle: clamp(1rem, 1.5vw, 1.25rem);
+    
+    /* Evidence typography */
+    --text-evidence-lead: clamp(1.25rem, 2vw, 1.75rem);
+    --text-evidence-item: clamp(0.9375rem, 1.1vw, 1.125rem);
+    
+    /* Metadata and labels */
+    --text-meta: clamp(0.8125rem, 0.95vw, 0.9375rem);
+    --text-label: clamp(0.75rem, 0.85vw, 0.875rem);
+    
+    /* Font families */
+    --font-display: "Instrument Serif", Georgia, serif;
+    --font-body: "Inter", system-ui, sans-serif;
+    
     --leading-display: 1.05;
     --leading-body: 1.6;
 
@@ -112,7 +130,7 @@
 
   .caption {
     font-size: var(--text-caption);
-    letter-spacing: 0.1em;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
   }
 
@@ -130,6 +148,45 @@
     line-height: var(--leading-body);
   }
 
+  /* Typography role classes */
+  .text-section-title {
+    font-family: var(--font-display);
+    font-size: var(--text-section-title);
+    line-height: var(--leading-display);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+
+  .text-section-subtitle {
+    font-family: var(--font-body);
+    font-size: var(--text-section-subtitle);
+    line-height: var(--leading-body);
+    color: var(--text-secondary);
+  }
+
+  .text-evidence-lead {
+    font-family: var(--font-display);
+    font-size: var(--text-evidence-lead);
+    line-height: var(--leading-display);
+  }
+
+  .text-evidence-item {
+    font-family: var(--font-body);
+    font-size: var(--text-evidence-item);
+    line-height: var(--leading-body);
+  }
+
+  .text-meta {
+    font-size: var(--text-meta);
+    letter-spacing: 0.04em;
+  }
+
+  .text-label {
+    font-size: var(--text-label);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
   .ink-border {
     border-color: rgba(10, 10, 10, 0.12);
   }
@@ -140,22 +197,6 @@
 
   .surface-base {
     background-color: var(--color-paper);
-  }
-
-  /* Rest card: paper + border + elev-rest. Hover elevates to floating. */
-  .surface-raised {
-    background-color: var(--color-paper);
-    border: 1px solid rgba(10, 10, 10, 0.12);
-    box-shadow: var(--shadow-rest);
-  }
-
-  .surface-raised-hover {
-    transition: box-shadow 0.25s ease;
-  }
-
-  .surface-raised-hover:hover,
-  .surface-raised-hover:focus-visible {
-    box-shadow: var(--shadow-floating);
   }
 
   .surface-muted {
@@ -352,20 +393,6 @@
 
   .text-faint {
     color: rgba(10, 10, 10, 0.45);
-  }
-
-  .title-underline {
-    background-image: linear-gradient(to right, var(--color-orange), var(--color-orange));
-    background-size: 0% 2px;
-    background-position: left bottom;
-    background-repeat: no-repeat;
-    transition: background-size 0.3s ease;
-  }
-
-  .group:hover .title-underline,
-  .group:focus-visible .title-underline,
-  .group:focus-within .title-underline {
-    background-size: 100% 2px;
   }
 
   /* Subtle bitmap-style dither for Night Dossier only */

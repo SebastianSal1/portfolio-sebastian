@@ -1,8 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
 import MagneticButton from "./MagneticButton";
-import MotionSection, { revealItem } from "./MotionSection";
+import MotionSection from "./MotionSection";
 
 interface ContactProps {
   email: string;
@@ -38,30 +37,27 @@ export default function Contact({
       />
 
       <div className="relative z-10 mx-auto max-w-6xl">
-        <motion.p variants={revealItem} className="caption mb-5 text-orange">
+        <p className="caption mb-5 text-orange">
           09 · Contact
-        </motion.p>
+        </p>
 
-        <motion.h2
-          variants={revealItem}
+        <h2
           id="contact-heading"
           className="max-w-4xl font-display text-paper text-balance"
           style={{ fontSize: "var(--text-h2)" }}
         >
           Ready to turn ambiguous questions into decisions you can defend.
-        </motion.h2>
+        </h2>
 
-        <motion.p
-          variants={revealItem}
+        <p
           className="mt-6 max-w-xl text-paper/70"
         >
           Open to roles where strategy, financial or operational analysis, and
           data-driven decisions matter — with execution depth when the work
           needs building.
-        </motion.p>
+        </p>
 
-        <motion.div
-          variants={revealItem}
+        <div
           className="mt-12 flex flex-wrap items-center gap-4"
         >
           <MagneticButton
@@ -86,7 +82,7 @@ export default function Contact({
             LinkedIn
             <span className="sr-only"> (opens in new tab)</span>
           </a>
-        </motion.div>
+        </div>
       </div>
     </MotionSection>
   );

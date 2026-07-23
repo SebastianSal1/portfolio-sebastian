@@ -26,7 +26,6 @@ export default async function Page() {
         name="Sebastian Lumme"
         eyebrow="Institut Teknologi Bandung · Industrial Engineering"
         thesis="I turn ambiguous business questions into structured, defensible decisions — across markets, operations, and delivery."
-        chips={["CGPA 3.83 / 4.0", "5× National Winner"]}
         email="sebastiansalutare@gmail.com"
         cvUrl="/cv.pdf"
         linkedin="https://linkedin.com/in/sebastian-salutare/"

@@ -1,7 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
-import MotionSection, { revealItem } from "./MotionSection";
+import MotionSection from "./MotionSection";
 
 // Operating Thesis — editorial pull quote + two unequal truthful signals.
 // Not 4 equal metric tiles. Backend modules stay out of About hero signals.
@@ -26,12 +25,12 @@ export default function AboutSnapshot() {
       className="section-shell"
       aria-labelledby="about-heading"
     >
-      <motion.p variants={revealItem} className="caption mb-4 text-accent">
+      <p className="caption mb-4 text-accent">
         02 · Operating Thesis
-      </motion.p>
+      </p>
 
       <div className="grid items-start gap-10 md:grid-cols-12 md:gap-10 lg:gap-12">
-        <motion.div variants={revealItem} className="md:col-span-7">
+        <div className="md:col-span-7">
           <h2
             id="about-heading"
             className="font-display text-ink text-balance"
@@ -50,10 +49,9 @@ export default function AboutSnapshot() {
           <p className="mt-6 text-sm tracking-wide text-tertiary">
             Strategy · Finance · Operations · Technical execution
           </p>
-        </motion.div>
+        </div>
 
-        <motion.ul
-          variants={revealItem}
+        <ul
           className="flex flex-col gap-8 md:col-span-5 md:pt-2"
           role="list"
         >
@@ -75,7 +73,7 @@ export default function AboutSnapshot() {
               <p className="mt-1 text-sm text-tertiary">{s.note}</p>
             </li>
           ))}
-        </motion.ul>
+        </ul>
       </div>
     </MotionSection>
   );

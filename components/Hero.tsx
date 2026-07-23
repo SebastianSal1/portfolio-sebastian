@@ -8,18 +8,16 @@ interface HeroProps {
   name: string;
   eyebrow: string;
   thesis: string;
-  chips: string[];
   email: string;
   cvUrl: string;
   linkedin: string;
-  /** Portrait path under /public. Defaults to placeholder. */
   portraitSrc?: string;
   portraitAlt?: string;
   roleTarget?: string;
 }
 
 const fadeUp = {
-  initial: { opacity: 0, y: 14 },
+  initial: { opacity: 0, y: 8 },
   animate: { opacity: 1, y: 0 },
 };
 
@@ -27,7 +25,6 @@ export default function Hero({
   name,
   eyebrow,
   thesis,
-  chips,
   email,
   cvUrl,
   linkedin,
@@ -35,8 +32,6 @@ export default function Hero({
   portraitAlt = "Sebastian Lumme",
   roleTarget,
 }: HeroProps) {
-  // Reduced motion: MotionConfig reducedMotion="user" in layout — no useReducedMotion branch (hydration).
-
   return (
     <section
       id="hero"
@@ -49,21 +44,11 @@ export default function Hero({
       />
 
       <div className="relative z-10 mx-auto grid w-full max-w-6xl items-center gap-10 lg:grid-cols-12 lg:gap-12">
-        {/* Copy — left */}
         <div className="min-w-0 lg:col-span-7">
           <motion.p
             className="caption mb-4 text-accent"
             {...fadeUp}
-            transition={{ delay: 0.05 }}
-          >
-            Industrial Engineer
-          </motion.p>
-
-          <motion.p
-            className="mb-5 max-w-xl text-sm text-tertiary"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.08 }}
+            transition={{ delay: 0.05, duration: 0.4 }}
           >
             {eyebrow}
           </motion.p>
@@ -83,7 +68,7 @@ export default function Hero({
           <motion.p
             className="mt-5 max-w-xl font-body text-base text-secondary md:text-lg"
             {...fadeUp}
-            transition={{ delay: 0.18 }}
+            transition={{ delay: 0.15, duration: 0.4 }}
           >
             {thesis}
           </motion.p>
@@ -92,34 +77,16 @@ export default function Hero({
             <motion.p
               className="mt-3 max-w-xl text-sm text-tertiary"
               {...fadeUp}
-              transition={{ delay: 0.15 }}
+              transition={{ delay: 0.18, duration: 0.4 }}
             >
               {roleTarget}
             </motion.p>
           )}
 
-          {chips.length > 0 && (
-            <motion.ul
-              className="mt-6 flex flex-wrap gap-2"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.28 }}
-            >
-              {chips.slice(0, 2).map((c) => (
-                <li
-                  key={c}
-                  className="inline-flex min-h-9 items-center rounded-pill border border-ink/12 bg-paper/80 px-3 py-1.5 text-xs tabular-nums text-tertiary"
-                >
-                  {c}
-                </li>
-              ))}
-            </motion.ul>
-          )}
-
           <motion.div
             className="mt-8 flex flex-wrap items-center gap-3 sm:gap-4"
             {...fadeUp}
-            transition={{ delay: 0.35 }}
+            transition={{ delay: 0.25, duration: 0.4 }}
           >
             <MagneticButton href="#work" primary>
               View evidence
@@ -143,15 +110,14 @@ export default function Hero({
           </motion.div>
         </div>
 
-        {/* Portrait media plate — right (option B) */}
         <motion.div
           className="min-w-0 lg:col-span-5"
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
         >
           <figure className="relative mx-auto w-full max-w-sm lg:ml-auto lg:max-w-none">
-            <div className="media-frame relative aspect-[4/5] overflow-hidden rounded-card border border-ink/12 bg-ink/[0.04] shadow-rest">
+            <div className="relative aspect-[4/5] overflow-hidden rounded-small bg-ink/[0.04]">
               {/* eslint-disable-next-line @next/next/no-img-element -- local /public portrait */}
               <img
                 src={portraitSrc}

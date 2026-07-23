@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import MotionSection, { revealItem, revealSoft } from "./MotionSection";
 
 interface CareerItem {
   year: string;
@@ -104,25 +103,28 @@ export default function CareerTimeline() {
   }
 
   return (
-    <MotionSection
+    <section
       id="experience"
       aria-labelledby="timeline-heading"
       className="section-shell"
     >
-      <motion.div variants={revealItem} className="mb-10 md:mb-12">
+      <div className="mb-12">
         <p className="caption mb-3 text-accent">06 · Trajectory</p>
         <h2
           id="timeline-heading"
           className="font-display text-ink text-balance"
-          style={{ fontSize: "var(--text-h2)" }}
+          style={{ fontSize: "var(--text-section-title)", lineHeight: "var(--leading-display)" }}
         >
           Experience
         </h2>
-        <p className="mt-3 max-w-2xl text-sm text-tertiary">
+        <p
+          className="mt-3 max-w-2xl text-secondary"
+          style={{ fontSize: "var(--text-section-subtitle)" }}
+        >
           Chronology and context — proof metrics live under each role when
           expanded.
         </p>
-      </motion.div>
+      </div>
 
       <ol className="relative ml-2 border-l-2 border-accent/25 sm:ml-3">
         {ITEMS.map((item, i) => {
@@ -130,9 +132,8 @@ export default function CareerTimeline() {
           const panelId = `career-panel-${i}`;
 
           return (
-            <motion.li
+            <li
               key={`${item.title}-${item.year}`}
-              variants={revealSoft}
               className="relative pb-8 pl-6 last:pb-0 sm:pl-8"
             >
               <span
@@ -157,11 +158,14 @@ export default function CareerTimeline() {
                     {item.year}
                   </time>
                   <span className="font-body font-medium text-ink">
-                    <span className="title-underline">{item.title}</span>
+                    {item.title}
                   </span>
                   <span className="text-tertiary">· {item.organization}</span>
                 </span>
-                <span className="caption mt-1 block text-tertiary">
+                <span
+                  className="mt-1 block text-tertiary"
+                  style={{ fontSize: "var(--text-meta)", letterSpacing: "0.04em" }}
+                >
                   {item.period} · {TYPE_LABEL[item.type]}
                 </span>
               </button>
@@ -193,10 +197,10 @@ export default function CareerTimeline() {
                   </motion.div>
                 )}
               </AnimatePresence>
-            </motion.li>
+            </li>
           );
         })}
       </ol>
-    </MotionSection>
+    </section>
   );
 }
