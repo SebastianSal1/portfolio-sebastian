@@ -817,9 +817,9 @@ function LeadershipAltB() {
   const [hoveredNodeId, setHoveredNodeId] = useState<string>("lead-1");
 
   return (
-    <div className="w-full relative pl-6 sm:pl-8 space-y-12 select-none py-4">
-      {/* Continuous Vertical Rail */}
-      <div className="absolute top-6 bottom-6 left-2.5 sm:left-3.5 w-0.5 bg-[#DDD7CB]" />
+    <div className="w-full relative space-y-12 select-none py-4">
+      {/* Continuous Vertical Rail centered on left-3 / left-4 */}
+      <div className="absolute top-2.5 bottom-6 left-3 sm:left-4 w-[1.5px] -translate-x-1/2 bg-[#DDD7CB]" />
 
       {CANONICAL_LEADERSHIP_DATA.map((item) => {
         const isHovered = hoveredNodeId === item.id;
@@ -827,17 +827,16 @@ function LeadershipAltB() {
           <div
             key={item.id}
             onMouseEnter={() => setHoveredNodeId(item.id)}
-            className="relative group cursor-pointer transition-all"
+            className="relative group cursor-pointer transition-all pl-8 sm:pl-11"
           >
-            {/* Timeline Node Dot */}
+            {/* Timeline Node Dot centered exactly on the line */}
             <div
-              className={`absolute -left-6 sm:-left-8 top-1.5 w-3.5 h-3.5 rounded-full border-2 transition-all duration-300 ${
+              className={`absolute left-3 sm:left-4 top-1 -translate-x-1/2 w-3.5 h-3.5 rounded-full border-2 transition-all duration-200 z-10 ${
                 isHovered
-                  ? "bg-[#3157C8] border-white ring-4 ring-[#3157C8]/20 scale-125"
+                  ? "bg-[#3157C8] border-white ring-4 ring-[#3157C8]/20 scale-125 shadow-xs"
                   : "bg-white border-[#8C887B]"
               }`}
             />
-
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
               {/* Organization Header (Col 1-4) */}
               <div className="lg:col-span-4 space-y-1">

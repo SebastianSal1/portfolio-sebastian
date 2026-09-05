@@ -531,9 +531,9 @@ export function VerticalNarrativeSections({ theme, arrowDesign = "classic" }: Ve
         </div>
 
         {/* 1B-B Kinetic Timeline Rails */}
-        <div className="w-full relative pl-6 sm:pl-8 space-y-10 select-none py-2">
-          {/* Continuous Vertical Rail */}
-          <div className="absolute top-4 bottom-4 left-2 sm:left-3 w-[1.5px] bg-[#DDD7CB]" />
+        <div className="w-full relative space-y-12 select-none py-2">
+          {/* Continuous Vertical Rail exactly centered on left-3 (mobile) / left-4 (desktop) */}
+          <div className="absolute top-2.5 bottom-6 left-3 sm:left-4 w-[1.5px] -translate-x-1/2 bg-[#DDD7CB]" />
 
           {CANONICAL_LEADERSHIP_DATA.map((item) => {
             const isHovered = hoveredOrgId === item.id;
@@ -541,17 +541,16 @@ export function VerticalNarrativeSections({ theme, arrowDesign = "classic" }: Ve
               <div
                 key={item.id}
                 onMouseEnter={() => setHoveredOrgId(item.id)}
-                className="relative group cursor-pointer transition-all"
+                className="relative group cursor-pointer transition-all pl-8 sm:pl-11"
               >
-                {/* Timeline Node Dot */}
+                {/* Timeline Node Dot: exactly centered on the rail line */}
                 <div
-                  className={`absolute -left-6 sm:-left-8 top-1.5 w-3.5 h-3.5 rounded-full border-2 transition-all duration-200 ${
+                  className={`absolute left-3 sm:left-4 top-1 -translate-x-1/2 w-3.5 h-3.5 rounded-full border-2 transition-all duration-200 z-10 ${
                     isHovered
-                      ? "bg-[var(--color-primary)] border-white ring-4 ring-[var(--color-primary)]/20 scale-125"
+                      ? "bg-[var(--color-primary)] border-white ring-4 ring-[var(--color-primary)]/20 scale-125 shadow-xs"
                       : "bg-white border-[#8C887B]"
                   }`}
                 />
-
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
                   {/* Organization Header (Col 1-4) */}
                   <div className="lg:col-span-4 space-y-1">
