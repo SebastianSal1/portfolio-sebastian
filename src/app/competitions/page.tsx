@@ -55,7 +55,7 @@ export default function CompetitionsPage() {
           </div>
         </div>
 
-        {/* Level-1 Competitions Ledger */}
+        {/* Level-1 Competitions Archive */}
         <div className="flex flex-col gap-8 max-w-[960px]">
           {COMPETITION_PLACEHOLDERS.map((comp) => (
             <article
@@ -91,7 +91,7 @@ export default function CompetitionsPage() {
               </div>
 
               <div className="mt-5 pt-3 border-t border-[#E2DFD7]/80 flex justify-between items-center text-[11px] text-[#8C887B]">
-                <span>Competitive Case Ledger</span>
+                <span>Case Competition Records</span>
                 <span>Provisional Structure</span>
               </div>
             </article>

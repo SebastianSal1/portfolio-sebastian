@@ -44,6 +44,19 @@ export interface AcademicRecord {
   focusAreas: string[];
   scholarships: Array<{ name: string; year: string; note: string }>;
   honors: Array<{ name: string; year: string; note: string }>;
+  creditsCompleted?: string;
+}
+
+export interface LeadershipItem {
+  id: string;
+  organization: string;
+  role: string;
+  period: string;
+  location: string;
+  primaryMetric: string;
+  scopeSummary: string;
+  keyInitiatives: string[];
+  focusAreas: string[];
 }
 
 export interface InterestItem {
@@ -245,7 +258,62 @@ export const CANONICAL_ACADEMICS_DATA: AcademicRecord = {
       note: "Maintained continuous high distinction across all academic semesters.",
     },
   ],
+  creditsCompleted: "140 / 144 Credits (SKS)",
 };
+
+// =============================================================================
+// 4B. CANONICAL LEADERSHIP & ORGANIZATIONS DATA (Sourced from CV & docs/CONTENT.md)
+// =============================================================================
+export const CANONICAL_LEADERSHIP_DATA: LeadershipItem[] = [
+  {
+    id: "lead-1",
+    organization: "ShARE ITB",
+    role: "Vice Leader Training & Development",
+    period: "Jun 2024 – Aug 2025",
+    location: "Bandung, Indonesia",
+    primaryMetric: "4.88 / 5.00 Satisfaction · 30% Annual Budget Contribution",
+    scopeSummary:
+      "Led consulting capability development and strategic education for student consultants, designing proprietary frameworks and revenue-generating masterclasses.",
+    keyInitiatives: [
+      "Designed and delivered 10+ consulting skill sessions spanning market sizing, VC investment thesis, and strategy frameworks for 30+ members.",
+      "Launched external Masterclass series generating 30% of total annual organization revenue while training 50+ external participants.",
+      "Established peer mentoring and structured case feedback loops elevating final deliverable consistency.",
+    ],
+    focusAreas: ["Management Consulting", "Curriculum Architecture", "Budget Strategy", "Capability Building"],
+  },
+  {
+    id: "lead-2",
+    organization: "LPOSI ITB (Lab. Perancangan Organisasi & Sistem Industri)",
+    role: "Laboratory Assistant & Research Fellow",
+    period: "2024 – Present",
+    location: "Bandung, Indonesia",
+    primaryMetric: "100+ Students Mentored across System Simulation Practicums",
+    scopeSummary:
+      "Assisted academic department practicums in organizational design, business process re-engineering, and industrial workflow simulation.",
+    keyInitiatives: [
+      "Guided 100+ undergraduate students through complex stochastic assembly line modeling and arena simulation modules.",
+      "Evaluated organizational design proposals, providing quantitative feedback on span of control and departmental workload balance.",
+      "Co-facilitated industrial engineering laboratory modules ensuring adherence to academic research standards.",
+    ],
+    focusAreas: ["Systems Modeling", "Process Re-engineering", "Academic Mentorship", "Industrial Simulation"],
+  },
+  {
+    id: "lead-3",
+    organization: "BSO Cirebon MTI ITB",
+    role: "Head of Student & Organizational Development",
+    period: "2023 – 2024",
+    location: "Cirebon & Bandung, Indonesia",
+    primaryMetric: "Cross-Campus Integration for 40+ Regional Undergraduates",
+    scopeSummary:
+      "Spearheaded student growth initiatives and academic integration for Industrial Engineering students at ITB's Cirebon multicampus.",
+    keyInitiatives: [
+      "Engineered cross-campus onboarding program aligning regional curriculum standards with ITB Ganesha headquarters.",
+      "Organized leadership training bootcamps and study groups supporting academic transition for junior cohorts.",
+      "Fostered institutional partnerships bridging student initiatives with local regional industry partners.",
+    ],
+    focusAreas: ["Organizational Growth", "Multicampus Integration", "Community Leadership", "Academic Transition"],
+  },
+];
 
 // =============================================================================
 // 5. INTERESTS & CURRENT FOCUS DATA (Homepage only)

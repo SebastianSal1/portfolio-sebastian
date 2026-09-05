@@ -229,7 +229,7 @@ export function VerticalNarrativeSections({ theme, arrowDesign = "classic" }: Ve
           </h2>
         </div>
 
-        {/* Option C: 2-Column Asymmetric Ledger */}
+        {/* Option C: 2-Column Asymmetric Overview */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14">
           {/* Left Column: Anchor & Action */}
           <div className="lg:col-span-4 flex flex-col justify-between">

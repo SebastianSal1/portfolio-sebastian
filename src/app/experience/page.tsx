@@ -48,7 +48,7 @@ export default function ExperiencePage() {
           </p>
         </div>
 
-        {/* Full Career Ledger (Level-1 Depth, No Child Routes) */}
+        {/* Full Career History (Level-1 Depth, No Child Routes) */}
         <div className="flex flex-col gap-12 sm:gap-14 max-w-[960px]">
           {CANONICAL_EXPERIENCE_DATA.map((role, idx) => {
             const isHovered = hoveredId === role.id;
