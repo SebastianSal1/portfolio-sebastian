@@ -118,19 +118,22 @@ export function FloatingNav({ theme }: FloatingNavProps) {
             ? "0 10px 28px -4px rgba(26, 25, 23, 0.08), 0 2px 6px rgba(26, 25, 23, 0.03)"
             : "0 2px 12px rgba(26, 25, 23, 0.04), 0 1px 3px rgba(26, 25, 23, 0.02)",
         }}
-        className="pointer-events-auto flex items-center justify-between px-3.5 sm:px-6 py-1.5 sm:py-2 rounded-full w-[760px] max-w-[94vw] transition-all duration-300 backdrop-blur-md border"
+        className="pointer-events-auto flex items-center justify-between md:justify-center gap-3 sm:gap-5 lg:gap-6 px-4 sm:px-5 py-1.5 sm:py-2 rounded-full w-full md:w-auto max-w-[94vw] transition-all duration-300 backdrop-blur-md border shadow-xs"
       >
         {/* Left: Full Brand Identity (Always routes to home /) */}
         <Link
           href="/"
           style={{ color: theme.textPrimary }}
-          className="font-semibold tracking-tight text-xs sm:text-[13.5px] pl-1.5 pr-2 py-1 hover:text-[var(--color-primary)] transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-focus-ring,#244BC0)] rounded-full shrink-0"
+          className="font-semibold tracking-tight text-xs sm:text-[13px] hover:text-[var(--color-primary)] transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-focus-ring,#244BC0)] rounded-full shrink-0 py-0.5"
         >
           <span>Sebastian Salutare</span>
         </Link>
 
+        {/* Subtle Vertical Divider (Desktop) */}
+        <div className="hidden md:block w-px h-3.5 bg-[#DDD7CB]/80 shrink-0" aria-hidden="true" />
+
         {/* Center: Desktop/Tablet Route Navigation (Hidden on small mobile < 768px) */}
-        <div className="hidden md:flex items-center gap-1 lg:gap-1.5 text-xs sm:text-[12.5px]">
+        <div className="hidden md:flex items-center gap-1 text-xs">
           {navLinks.map((link) => {
             const isActive = pathname === link.href;
             const isHovered = activeHover === link.label;
@@ -166,9 +169,11 @@ export function FloatingNav({ theme }: FloatingNavProps) {
           })}
         </div>
 
+        {/* Subtle Vertical Divider (Desktop) */}
+        <div className="hidden md:block w-px h-3.5 bg-[#DDD7CB]/80 shrink-0" aria-hidden="true" />
+
         {/* Right: Mobile Menu Toggle + CV Action */}
-        <div className="flex items-center gap-1 sm:gap-2">
-          {/* Mobile Menu Toggle Button (Visible only on < 768px) */}
+        <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
           <button
             ref={toggleButtonRef}
             type="button"
