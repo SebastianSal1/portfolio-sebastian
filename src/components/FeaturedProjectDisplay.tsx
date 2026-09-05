@@ -6,6 +6,7 @@ import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { FullSiteStudyTheme } from "@/lib/theme";
 import { usePrefersReducedMotion } from "@/lib/usePrefersReducedMotion";
 import { useCvModal } from "@/context/CvModalContext";
+import { getMailtoHref } from "./footer/ContactLinks";
 interface DocumentationItem {
   id: string;
   title: string;
@@ -258,13 +259,24 @@ export function FeaturedProjectDisplay({ theme }: FeaturedProjectDisplayProps) {
         {/* Left Group: Channels/Links hugging their text */}
         <div className="flex items-center gap-2 sm:gap-2.5">
           <a
-            href="mailto:contact@sebastiansalutare.com"
-            className="px-3.5 py-2 border border-[#DDD7CB]/75 bg-white/40 backdrop-blur-xs rounded-[10px] text-xs sm:text-sm font-medium text-[#1A1917] shadow-2xs hover:bg-white/95 hover:border-[#DDD7CB] transition-all duration-200 hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-focus-ring,#244BC0)]"
+            href="#"
+            onClick={(e) => {
+              e.preventDefault();
+              window.location.href = getMailtoHref();
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.href = getMailtoHref();
+            }}
+            onFocus={(e) => {
+              e.currentTarget.href = getMailtoHref();
+            }}
+            className="px-3.5 py-2 border border-[#DDD7CB]/75 bg-white/40 backdrop-blur-xs rounded-[10px] text-xs sm:text-sm font-medium text-[#1A1917] shadow-2xs hover:bg-white/95 hover:border-[#DDD7CB] transition-all duration-200 hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-focus-ring,#244BC0)] cursor-pointer"
+            aria-label="Email Sebastian Salutare (opens default mail client)"
           >
             Email
           </a>
           <a
-            href="https://linkedin.com"
+            href="https://linkedin.com/in/sebastian-salutare/"
             target="_blank"
             rel="noopener noreferrer"
             className="px-3.5 py-2 border border-[#DDD7CB]/75 bg-white/40 backdrop-blur-xs rounded-[10px] text-xs sm:text-sm font-medium text-[#1A1917] shadow-2xs hover:bg-white/95 hover:border-[#DDD7CB] transition-all duration-200 hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-focus-ring,#244BC0)]"
@@ -272,7 +284,7 @@ export function FeaturedProjectDisplay({ theme }: FeaturedProjectDisplayProps) {
             LinkedIn
           </a>
           <a
-            href="https://github.com"
+            href="https://github.com/SebastianSal1"
             target="_blank"
             rel="noopener noreferrer"
             className="px-3.5 py-2 border border-[#DDD7CB]/75 bg-white/40 backdrop-blur-xs rounded-[10px] text-xs sm:text-sm font-medium text-[#1A1917] shadow-2xs hover:bg-white/95 hover:border-[#DDD7CB] transition-all duration-200 hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-focus-ring,#244BC0)]"

@@ -117,7 +117,7 @@ export function PrivacyNoticeModal({
 
         <h4 className="font-semibold text-white text-sm mt-2">2. Direct Communication</h4>
         <p>
-          Any communications initiated via direct email (<code className="text-[var(--color-primary)] bg-white/5 px-1 py-0.5 rounded">contact@sebastiansalutare.com</code>) are used solely for professional dialogue, prospective consulting, or recruitment inquiries. Your email address is never shared, sold, or added to automated mailing lists.
+          Any communications initiated via direct email are used solely for professional dialogue, prospective consulting, or recruitment inquiries. Your email address is never shared, sold, or added to automated mailing lists.
         </p>
 
         <h4 className="font-semibold text-white text-sm mt-2">3. Hosting & Transit Security</h4>

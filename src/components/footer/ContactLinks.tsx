@@ -4,10 +4,18 @@ import React from "react";
 import { Mail, ArrowUpRight, ArrowRight, ArrowUp } from "lucide-react";
 import { usePrefersReducedMotion } from "@/lib/usePrefersReducedMotion";
 import { useCvModal } from "@/context/CvModalContext";
+// Compose email address from constituent fragments to prevent basic static HTML harvesting
+const EMAIL_USER = "sebastiansalutare";
+const EMAIL_DOMAIN = "gmail.com";
+export const getCanonicalEmail = () => `${EMAIL_USER}@${EMAIL_DOMAIN}`;
+export const getMailtoHref = () => `mailto:${getCanonicalEmail()}`;
+
 export const CANONICAL_CONTACT = {
-  email: "sebastiansalutare@gmail.com",
+  get email() {
+    return getCanonicalEmail();
+  },
   linkedin: "https://linkedin.com/in/sebastian-salutare/",
-  github: "https://github.com",
+  github: "https://github.com/SebastianSal1",
   cvMailto: "/cv.pdf",
   cvLabel: "Preview CV",
 };
@@ -62,6 +70,17 @@ export function PrimaryEmailLink({
   showAddress?: boolean;
   variant?: "cobalt" | "ink" | "ghost";
 }) {
+  const [activeHref, setActiveHref] = React.useState<string>("#");
+
+  const handleActivate = React.useCallback(() => {
+    setActiveHref(getMailtoHref());
+  }, []);
+
+  const handleClick = React.useCallback((e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    window.location.href = getMailtoHref();
+  }, []);
+
   const baseClasses =
     "inline-flex items-center justify-center gap-2.5 px-6 py-3 rounded-xl text-sm font-semibold transition-all duration-200 select-none cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)] focus-visible:ring-offset-2";
 
@@ -74,15 +93,15 @@ export function PrimaryEmailLink({
 
   return (
     <a
-      href={`mailto:${CANONICAL_CONTACT.email}`}
+      href={activeHref}
+      onClick={handleClick}
+      onMouseEnter={handleActivate}
+      onFocus={handleActivate}
       className={`${baseClasses} ${colorClasses} ${className}`}
-      aria-label={`${label}: ${CANONICAL_CONTACT.email}`}
+      aria-label={`${label} (opens default mail client)`}
     >
       <Mail className="w-4 h-4 shrink-0" aria-hidden="true" />
       <span>{label}</span>
-      {showAddress && (
-        <span className="text-xs opacity-75 font-normal">({CANONICAL_CONTACT.email})</span>
-      )}
     </a>
   );
 }

@@ -1,6 +1,21 @@
 import type { Metadata } from "next";
+import { Instrument_Serif, Inter } from "next/font/google";
 import { ClientProviders } from "@/components/ClientProviders";
 import "./globals.css";
+
+const instrumentSerif = Instrument_Serif({
+  weight: "400",
+  subsets: ["latin"],
+  style: ["normal", "italic"],
+  variable: "--font-instrument-serif",
+  display: "swap",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
 export const metadata: Metadata = {
   metadataBase: new URL("https://portfolio-sebastiansal.vercel.app"),
   title: {
@@ -58,16 +73,8 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className="antialiased scroll-smooth"
+      className={`${instrumentSerif.variable} ${inter.variable} antialiased scroll-smooth`}
     >
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700;750&display=swap"
-          rel="stylesheet"
-        />
-      </head>
       <body className="bg-[var(--color-surface-canvas)] text-[var(--color-content-display)] font-sans min-h-screen selection:bg-[var(--color-primary)]/15 selection:text-[var(--color-primary)]">
         <ClientProviders>
           {children}

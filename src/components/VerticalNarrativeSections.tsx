@@ -26,6 +26,7 @@ import { useCvModal } from "@/context/CvModalContext";
 import { useIsMounted } from "@/lib/useIsMounted";
 import { useFocusTrap } from "@/lib/useFocusTrap";
 import { CurlNoiseFlowField } from "./footer/CurlNoiseFlowField";
+import { getMailtoHref } from "./footer/ContactLinks";
 import { PrivacyNoticeModal, ColophonModal } from "./footer/FooterModals";
 import { BackToTopLink } from "./footer/ContactLinks";
 import {
@@ -1046,9 +1047,19 @@ export function VerticalNarrativeSections({ theme, arrowDesign = "classic" }: Ve
               <div className="flex flex-wrap items-center justify-start lg:justify-end gap-2.5 sm:gap-3">
                 {/* Email Button */}
                 <a
-                  href="mailto:sebastiansalutare@gmail.com"
+                  href="#"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    window.location.href = getMailtoHref();
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.href = getMailtoHref();
+                  }}
+                  onFocus={(e) => {
+                    e.currentTarget.href = getMailtoHref();
+                  }}
                   className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-white border border-[#DDD7CB] text-[#1A1917] text-xs sm:text-[13px] font-semibold hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] transition-all shadow-2xs focus-visible:outline-2 focus-visible:outline-[var(--color-primary)] cursor-pointer"
-                  aria-label="Email: sebastiansalutare@gmail.com"
+                  aria-label="Email Sebastian Salutare (opens default mail client)"
                 >
                   <Mail className="w-3.5 h-3.5 text-[var(--color-primary)] shrink-0" />
                   <span>Email</span>
@@ -1070,7 +1081,7 @@ export function VerticalNarrativeSections({ theme, arrowDesign = "classic" }: Ve
 
                 {/* GitHub Button */}
                 <a
-                  href="https://github.com"
+                  href="https://github.com/SebastianSal1"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-white border border-[#DDD7CB] text-[#1A1917] text-xs sm:text-[13px] font-semibold hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] transition-all shadow-2xs focus-visible:outline-2 focus-visible:outline-[var(--color-primary)] cursor-pointer"
