@@ -42,9 +42,9 @@ const PROJECT_IMAGES: Record<string, string> = {
 };
 
 const COMPETITION_IMAGES: Record<string, string> = {
-  "comp-ph-1": "/images/explorations/competition-placeholder-01.png",
-  "comp-ph-2": "/images/explorations/competition-placeholder-02.png",
-  "comp-ph-3": "/images/explorations/competition-placeholder-03.png",
+  "comp-ph-1": "/images/competitions/iecom-2026-pitch-deck.png",
+  "comp-ph-2": "/images/competitions/hyundai-eco-summit-2025.png",
+  "comp-ph-3": "/images/competitions/simkopdes-hackathon-2026.png",
 };
 
 export type ArrowDesign = "classic" | "chevron" | "taper" | "architectural" | "diagonal";
