@@ -17,6 +17,8 @@ import {
   ArrowRight,
   ArrowUpRight,
   ChevronRight,
+  Users,
+  BookOpen,
 } from "lucide-react";
 import { FullSiteStudyTheme } from "@/lib/theme";
 import { usePrefersReducedMotion } from "@/lib/usePrefersReducedMotion";
@@ -31,9 +33,21 @@ import {
   PROJECT_PLACEHOLDERS,
   COMPETITION_PLACEHOLDERS,
   CANONICAL_ACADEMICS_DATA,
+  CANONICAL_LEADERSHIP_DATA,
   CURRENT_INTERESTS_DATA,
   ExperienceItem,
 } from "@/lib/domain-data";
+import {
+  PythonIcon,
+  PostgreSqlIcon,
+  PowerBiIcon,
+  ExcelIcon,
+  WordIcon,
+  PowerPointIcon,
+  FigmaIcon,
+  RIcon,
+  ArenaSimulationIcon,
+} from "./icons/BrandToolIcons";
 
 const PROJECT_IMAGES: Record<string, string> = {
   "proj-ph-1": "/images/explorations/project-placeholder-01.png",
@@ -173,6 +187,7 @@ export function VerticalNarrativeSections({ theme, arrowDesign = "classic" }: Ve
   const [activeSidePanelId, setActiveSidePanelId] = useState<string | null>(null);
   const [isPrivacyOpen, setIsPrivacyOpen] = useState(false);
   const [isColophonOpen, setIsColophonOpen] = useState(false);
+  const [hoveredOrgId, setHoveredOrgId] = useState<string>("lead-1");
   const sidePanelTriggerRef = useRef<HTMLElement | null>(null);
   const panelTitleRef = useRef<HTMLHeadingElement | null>(null);
   const reducedMotion = usePrefersReducedMotion();
@@ -491,7 +506,95 @@ export function VerticalNarrativeSections({ theme, arrowDesign = "classic" }: Ve
       </section>
 
       {/* ======================================================================= */}
-      {/* 4. ACADEMICS SECTION                                                    */}
+      {/* 4. LEADERSHIP & ORGANIZATIONS SECTION                                   */}
+      {/* ======================================================================= */}
+      <section id="leadership" className="w-full max-w-[1440px] mx-auto px-6 sm:px-12 lg:px-16">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8 select-none">
+          <div className="flex items-center gap-2.5">
+            <span className="p-1.5 rounded-lg bg-[#1A1917]/[0.04] text-[var(--color-primary)]">
+              <Users className="w-5 h-5" />
+            </span>
+            <h3
+              style={{ color: theme.textPrimary }}
+              className="text-2xl sm:text-[28px] font-bold font-sans tracking-tight"
+            >
+              Leadership & Organizations
+            </h3>
+          </div>
+
+          <SignatureNavigationButton href="/experience" label="View leadership" arrowDesign={arrowDesign} />
+        </div>
+
+        {/* 1B-B Kinetic Timeline Rails */}
+        <div className="w-full relative pl-6 sm:pl-8 space-y-10 select-none py-2">
+          {/* Continuous Vertical Rail */}
+          <div className="absolute top-4 bottom-4 left-2 sm:left-3 w-[1.5px] bg-[#DDD7CB]" />
+
+          {CANONICAL_LEADERSHIP_DATA.map((item) => {
+            const isHovered = hoveredOrgId === item.id;
+            return (
+              <div
+                key={item.id}
+                onMouseEnter={() => setHoveredOrgId(item.id)}
+                className="relative group cursor-pointer transition-all"
+              >
+                {/* Timeline Node Dot */}
+                <div
+                  className={`absolute -left-6 sm:-left-8 top-1.5 w-3.5 h-3.5 rounded-full border-2 transition-all duration-200 ${
+                    isHovered
+                      ? "bg-[var(--color-primary)] border-white ring-4 ring-[var(--color-primary)]/20 scale-125"
+                      : "bg-white border-[#8C887B]"
+                  }`}
+                />
+
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+                  {/* Organization Header (Col 1-4) */}
+                  <div className="lg:col-span-4 space-y-1">
+                    <span className="text-xs font-bold text-[var(--color-primary)] uppercase tracking-wider">
+                      {item.period}
+                    </span>
+                    <h4 className="text-xl sm:text-2xl font-bold font-serif text-[#1A1917] tracking-tight group-hover:text-[var(--color-primary)] transition-colors">
+                      {item.organization}
+                    </h4>
+                    <p className="text-xs sm:text-sm font-semibold text-[#5E5B55]">
+                      {item.role}
+                    </p>
+                    <p className="text-xs text-[#7A766D]">{item.location}</p>
+                  </div>
+
+                  {/* Scope & Impact (Col 5-12) */}
+                  <div className="lg:col-span-8 space-y-3">
+                    <div className="p-3.5 rounded-xl bg-white/70 border border-[#DDD7CB]/70">
+                      <span className="text-xs font-bold text-[var(--color-primary)] block mb-0.5">
+                        Primary Quantified Result
+                      </span>
+                      <span className="text-sm font-semibold text-[#1A1917]">
+                        {item.primaryMetric}
+                      </span>
+                    </div>
+
+                    <p className="text-xs sm:text-sm text-[#45433E] leading-relaxed">
+                      {item.scopeSummary}
+                    </p>
+
+                    <ul className="space-y-1.5 pt-1">
+                      {item.keyInitiatives.map((init, idx) => (
+                        <li key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-[#1A1917]">
+                          <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-primary)] mt-1.5 shrink-0" />
+                          <span className="leading-relaxed">{init}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* ======================================================================= */}
+      {/* 5. ACADEMICS SECTION (Swiss 3-Zone Grid + Real Brand Skills)            */}
       {/* ======================================================================= */}
       <section id="academics" className="w-full max-w-[1440px] mx-auto px-6 sm:px-12 lg:px-16">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8 select-none">
@@ -510,36 +613,234 @@ export function VerticalNarrativeSections({ theme, arrowDesign = "classic" }: Ve
           <SignatureNavigationButton href="/education" label="View academics" arrowDesign={arrowDesign} />
         </div>
 
-        {/* Open Typographic / Document Layout */}
-        <div className="flex flex-col max-w-[960px] p-6 sm:p-8 rounded-2xl border border-[#DDD7CB] bg-white/60 backdrop-blur-xs">
-          <div className="flex items-start gap-4 sm:gap-5 mb-6">
-            <div className="relative w-12 h-12 shrink-0 mt-0.5">
-              <Image
-                src="/images/itb-logo.png"
-                alt="ITB Emblem"
-                width={48}
-                height={48}
-                className="w-full h-full object-contain"
-              />
+        {/* Swiss 3-Zone Grid: Zero Enclosing Box, Zero Lines, 1440px Full-Width Justified */}
+        <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-10 sm:gap-12 lg:gap-16 py-2 select-none">
+          {/* Zone 1: Scholastic Anchor */}
+          <div className="flex flex-col justify-start space-y-6">
+            <div className="flex items-start gap-4">
+              <div className="w-14 h-14 relative shrink-0 mt-0.5">
+                <Image
+                  src="/images/itb-logo.png"
+                  alt="ITB Logo"
+                  width={56}
+                  height={56}
+                  className="w-full h-full object-contain"
+                />
+              </div>
+              <div>
+                <h4 className="text-xl sm:text-2xl font-bold font-serif text-[#1A1917] tracking-tight leading-tight">
+                  {CANONICAL_ACADEMICS_DATA.institution}
+                </h4>
+                <p className="text-sm font-semibold text-[#45433E] mt-1">
+                  {CANONICAL_ACADEMICS_DATA.degree}
+                </p>
+                <p className="text-xs text-[#7A766D] mt-0.5">
+                  {CANONICAL_ACADEMICS_DATA.department} · {CANONICAL_ACADEMICS_DATA.period}
+                </p>
+              </div>
             </div>
-            <div className="flex flex-col">
-              <h4 className="text-xl sm:text-2xl font-bold font-sans text-[#1A1917] tracking-tight">
-                {CANONICAL_ACADEMICS_DATA.institution}
-              </h4>
-              <p className="text-sm sm:text-base font-semibold text-[#45433E] mt-0.5">
-                {CANONICAL_ACADEMICS_DATA.degree}, {CANONICAL_ACADEMICS_DATA.department}
-              </p>
-              <div className="flex flex-wrap items-center gap-2 text-xs sm:text-[13px] text-[#5E5B55] mt-2">
-                <span>{CANONICAL_ACADEMICS_DATA.period}</span>
-                <span className="text-[#DDD7CB]">,</span>
-                <span className="font-semibold text-[#1A1917]">GPA {CANONICAL_ACADEMICS_DATA.gpa}</span>
-                <span className="text-[var(--color-primary)] font-medium">({CANONICAL_ACADEMICS_DATA.academicStanding})</span>
+
+            <div className="space-y-4 pt-2">
+              <span className="text-xs font-bold uppercase tracking-wider text-[#8C887B]">
+                Cumulative Grade Point Average
+              </span>
+              <div className="flex items-baseline gap-3 mt-1.5">
+                <span className="text-4xl sm:text-5xl font-bold font-serif text-[#1A1917] tracking-tight">
+                  {CANONICAL_ACADEMICS_DATA.gpa}
+                </span>
+                <span className="text-xs font-bold text-[var(--color-primary)] px-2.5 py-1 rounded-md bg-[var(--color-primary)]/10">
+                  {CANONICAL_ACADEMICS_DATA.academicStanding}
+                </span>
               </div>
             </div>
           </div>
-          <p className="text-xs sm:text-[13.5px] text-[#45433E] leading-relaxed mb-4">
-            Industrial engineering focus spanning linear & mixed-integer optimization (MILP), stochastic discrete-event simulation, and corporate financial valuation models.
-          </p>
+
+          {/* Zone 2: Research Focus */}
+          <div className="flex flex-col justify-start space-y-6">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-[var(--color-primary)]/10 text-[var(--color-primary)] flex items-center justify-center shrink-0">
+                <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <polygon points="12 2 2 7 12 12 22 7 12 2" />
+                  <polyline points="2 17 12 22 22 17" />
+                  <polyline points="2 12 12 17 22 12" />
+                </svg>
+              </div>
+              <div>
+                <h4 className="text-xl sm:text-2xl font-bold font-serif text-[#1A1917] tracking-tight">
+                  Research Focus
+                </h4>
+                <p className="text-xs text-[#7A766D]">
+                  Operations Research & Quantitative Modeling
+                </p>
+              </div>
+            </div>
+
+            <p className="text-xs sm:text-sm text-[#5E5B55] leading-relaxed">
+              Core analytical specialization bridging mathematical optimization, stochastic systems, and corporate finance:
+            </p>
+
+            <ul className="space-y-2.5">
+              {CANONICAL_ACADEMICS_DATA.focusAreas.map((area, idx) => (
+                <li key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-[#1A1917]">
+                  <span className="w-2 h-2 rounded-full bg-[var(--color-primary)] mt-1.5 shrink-0" />
+                  <span className="leading-snug font-medium">{area}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Zone 3: Recognition & Awards */}
+          <div className="flex flex-col justify-start space-y-6">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-[var(--color-accent)]/10 text-[var(--color-accent)] flex items-center justify-center shrink-0">
+                <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="8" r="7" />
+                  <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88" />
+                </svg>
+              </div>
+              <div>
+                <h4 className="text-xl sm:text-2xl font-bold font-serif text-[#1A1917] tracking-tight">
+                  Recognition & Awards
+                </h4>
+                <p className="text-xs text-[#7A766D]">
+                  Merit Scholarships & Academic Distinctions
+                </p>
+              </div>
+            </div>
+
+            <div className="space-y-3.5">
+              {CANONICAL_ACADEMICS_DATA.scholarships.map((s, idx) => (
+                <div key={idx} className="space-y-0.5">
+                  <div className="flex justify-between items-baseline gap-2">
+                    <span className="text-xs sm:text-sm font-bold text-[#1A1917]">{s.name}</span>
+                    <span className="text-xs font-semibold text-[var(--color-primary)] shrink-0">{s.year}</span>
+                  </div>
+                  <p className="text-xs text-[#5E5B55] leading-relaxed">{s.note}</p>
+                </div>
+              ))}
+
+              <div className="space-y-0.5 pt-1">
+                <div className="flex justify-between items-baseline gap-2">
+                  <span className="text-xs sm:text-sm font-bold text-[#1A1917]">YAR-TSRA Research Grant</span>
+                  <span className="text-xs font-semibold text-[var(--color-primary)] shrink-0">2024</span>
+                </div>
+                <p className="text-xs text-[#5E5B55] leading-relaxed">
+                  Competitive engineering research grant for systems modeling and optimization.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* =================================================================== */}
+        {/* APPLIED SKILLS & TOOLSET ROW (Real Official Brand SVGs)             */}
+        {/* =================================================================== */}
+        <div className="mt-14 pt-8 border-t border-[#DDD7CB]/70">
+          <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 mb-6">
+            <div>
+              <span className="text-[11px] font-bold uppercase tracking-wider text-[#8C887B]">
+                Applied Skills & Toolset
+              </span>
+              <h4 className="text-lg font-bold font-serif text-[#1A1917] mt-0.5">
+                Technical Stack & Work Software
+              </h4>
+            </div>
+            <p className="text-xs text-[#7A766D]">
+              Verified proficiency across engineering, modeling, analysis, and strategic communication.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-10">
+            {/* Cluster 1: Tech & Data */}
+            <div className="space-y-3">
+              <span className="text-xs font-bold uppercase tracking-wider text-[#1A1917]">
+                Tech & Data Architecture
+              </span>
+              <div className="flex flex-col gap-2">
+                <div className="flex items-center gap-3 p-2.5 rounded-xl bg-white/70 border border-[#DDD7CB]/60 hover:border-[#3157C8]/40 transition-colors">
+                  <PythonIcon className="w-5 h-5 shrink-0" />
+                  <div className="flex flex-col">
+                    <span className="text-xs font-bold text-[#1A1917]">Python</span>
+                    <span className="text-[11px] text-[#5E5B55]">PuLP, NumPy, SciPy, Pandas</span>
+                  </div>
+                </div>
+                <div className="flex items-center gap-3 p-2.5 rounded-xl bg-white/70 border border-[#DDD7CB]/60 hover:border-[#3157C8]/40 transition-colors">
+                  <PostgreSqlIcon className="w-5 h-5 shrink-0" />
+                  <div className="flex flex-col">
+                    <span className="text-xs font-bold text-[#1A1917]">PostgreSQL / SQL</span>
+                    <span className="text-[11px] text-[#5E5B55]">Relational Querying & Schema Design</span>
+                  </div>
+                </div>
+                <div className="flex items-center gap-3 p-2.5 rounded-xl bg-white/70 border border-[#DDD7CB]/60 hover:border-[#3157C8]/40 transition-colors">
+                  <RIcon className="w-5 h-5 shrink-0" />
+                  <div className="flex flex-col">
+                    <span className="text-xs font-bold text-[#1A1917]">R Computing</span>
+                    <span className="text-[11px] text-[#5E5B55]">Statistical Inference & Regression</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Cluster 2: Modeling & Analysis */}
+            <div className="space-y-3">
+              <span className="text-xs font-bold uppercase tracking-wider text-[#1A1917]">
+                Modeling & Operational Analysis
+              </span>
+              <div className="flex flex-col gap-2">
+                <div className="flex items-center gap-3 p-2.5 rounded-xl bg-white/70 border border-[#DDD7CB]/60 hover:border-[#3157C8]/40 transition-colors">
+                  <ExcelIcon className="w-5 h-5 shrink-0" />
+                  <div className="flex flex-col">
+                    <span className="text-xs font-bold text-[#1A1917]">Microsoft Excel / VBA</span>
+                    <span className="text-[11px] text-[#5E5B55]">DCF Valuation & Sensitivity Analysis</span>
+                  </div>
+                </div>
+                <div className="flex items-center gap-3 p-2.5 rounded-xl bg-white/70 border border-[#DDD7CB]/60 hover:border-[#3157C8]/40 transition-colors">
+                  <PowerBiIcon className="w-5 h-5 shrink-0" />
+                  <div className="flex flex-col">
+                    <span className="text-xs font-bold text-[#1A1917]">Microsoft Power BI</span>
+                    <span className="text-[11px] text-[#5E5B55]">Interactive Business Intelligence</span>
+                  </div>
+                </div>
+                <div className="flex items-center gap-3 p-2.5 rounded-xl bg-white/70 border border-[#DDD7CB]/60 hover:border-[#3157C8]/40 transition-colors">
+                  <ArenaSimulationIcon className="w-5 h-5 shrink-0" />
+                  <div className="flex flex-col">
+                    <span className="text-xs font-bold text-[#1A1917]">Arena Simulation</span>
+                    <span className="text-[11px] text-[#5E5B55]">Discrete-Event Bottleneck Modeling</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Cluster 3: Strategy & Design */}
+            <div className="space-y-3">
+              <span className="text-xs font-bold uppercase tracking-wider text-[#1A1917]">
+                Strategy & Presentation Design
+              </span>
+              <div className="flex flex-col gap-2">
+                <div className="flex items-center gap-3 p-2.5 rounded-xl bg-white/70 border border-[#DDD7CB]/60 hover:border-[#3157C8]/40 transition-colors">
+                  <PowerPointIcon className="w-5 h-5 shrink-0" />
+                  <div className="flex flex-col">
+                    <span className="text-xs font-bold text-[#1A1917]">Microsoft PowerPoint</span>
+                    <span className="text-[11px] text-[#5E5B55]">Executive Board Decks & Storylining</span>
+                  </div>
+                </div>
+                <div className="flex items-center gap-3 p-2.5 rounded-xl bg-white/70 border border-[#DDD7CB]/60 hover:border-[#3157C8]/40 transition-colors">
+                  <WordIcon className="w-5 h-5 shrink-0" />
+                  <div className="flex flex-col">
+                    <span className="text-xs font-bold text-[#1A1917]">Microsoft Word / Docs</span>
+                    <span className="text-[11px] text-[#5E5B55]">Institutional Policy & Advisory Briefs</span>
+                  </div>
+                </div>
+                <div className="flex items-center gap-3 p-2.5 rounded-xl bg-white/70 border border-[#DDD7CB]/60 hover:border-[#3157C8]/40 transition-colors">
+                  <FigmaIcon className="w-5 h-5 shrink-0" />
+                  <div className="flex flex-col">
+                    <span className="text-xs font-bold text-[#1A1917]">Figma</span>
+                    <span className="text-[11px] text-[#5E5B55]">UI/UX Design Systems & Wireframing</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
