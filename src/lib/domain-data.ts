@@ -168,38 +168,38 @@ export const PROJECT_PLACEHOLDERS: ProjectPlaceholderItem[] = [
 export const COMPETITION_PLACEHOLDERS: CompetitionPlaceholderItem[] = [
   {
     id: "comp-ph-1",
-    title: "Strategic Advisory Case Championship",
-    period: "2024",
+    title: "Industrial Engineering Competition (IECOM) 2026",
+    period: "2026",
     challengeContext:
-      "National-tier corporate turnaround problem formulating a 5-year capital allocation and operational recovery thesis.",
-    role: "Lead Strategist & Financial Modeler",
-    resultPlacement: "National Champion / 1st Place",
+      "National corporate strategy challenge for by.U (Telkomsel digital telco brand) tackling market share erosion and youth-segment merchandise acquisition stagnation through 2028.",
+    role: "Lead Strategist & Quantitative Modeler",
+    resultPlacement: "1st Runner-Up / 2nd Place",
     keyOutput:
-      "Synthesized a 35-slide executive presentation detailing unit economics restructuring and supply chain consolidation.",
+      "Formulated the 'B.Y.U Strategy' integrating multi-scenario linear regression demand forecasting, customer journey offline-to-online activation, and interactive Python Dash analytical models.",
     isPlaceholder: true,
   },
   {
     id: "comp-ph-2",
-    title: "Operations & Supply Chain Case Competition",
-    period: "2023",
+    title: "Hyundai Eco Summit 2025 (MUN Simulation)",
+    period: "2025",
     challengeContext:
-      "Cross-border FMCG network optimization challenge addressing severe distribution lead-time delays and port bottleneck costs.",
-    role: "Lead Operations Analyst",
-    resultPlacement: "Finalist / Top 5 Placement",
+      "Multi-lateral environmental governance and sustainability negotiation addressing Global Environmental Data Inequality across developing nations.",
+    role: "Delegate of Thailand",
+    resultPlacement: "Selected Delegate / Participant",
     keyOutput:
-      "Engineered a dynamic inventory positioning model reducing regional stockouts while holding safety stock steady.",
+      "Authored comprehensive policy paper and resolution framework proposing the 'Global Green Data Partnership' funded via IMF RST and green bonds under UNEP/World Bank standards.",
     isPlaceholder: true,
   },
   {
     id: "comp-ph-3",
-    title: "Quantitative Business Analytics Challenge",
-    period: "2023",
+    title: "Hackathon Digital Cooperatives 2026 (SIMKOPDES)",
+    period: "2026",
     challengeContext:
-      "Data-driven pricing strategy and customer lifetime value optimization for a high-growth regional digital platform.",
-    role: "Quantitative Analyst",
-    resultPlacement: "Podium Recognition / 3rd Place",
+      "National digital cooperative modernization challenge by Kementerian Koperasi RI & PEBS FEB UI developing real-time digital governance for Koperasi Desa/Kelurahan Merah Putih (KDKMP).",
+    role: "Systems & Digital Solution Innovator",
+    resultPlacement: "Top 100 Selected Participant",
     keyOutput:
-      "Constructed a multi-variable price elasticity model evaluating tiered margin contributions across merchant cohorts.",
+      "Engineered digital platform architecture integrating real-time rural commodity tracking, transparent financial ledgers, and grassroots member services.",
     isPlaceholder: true,
   },
 ];
