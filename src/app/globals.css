@@ -1,0 +1,132 @@
+@import "tailwindcss";
+
+@theme {
+  /* Surfaces */
+  --color-surface-canvas: #F5F3EE;
+  --color-surface-elevated: #FBFBF9;
+  --color-surface-secondary: #EDE9E1;
+
+  /* Typography & Content */
+  --color-content-display: #1A1917;
+  --color-content-body: #45433E;
+  --color-content-muted: #5E5B55;
+
+  /* Brand Chromatic Hierarchy */
+  --color-primary: #3157C8;
+  --color-primary-hover: #2849AB;
+  --color-primary-active: #223F96;
+  --color-on-primary: #FFFFFF;
+
+  /* Dedicated Semantic Roles */
+  --color-focus-ring: #244BC0;
+  --color-accent-counter: #F0522D;
+
+  /* Hairlines & Structural Outlines */
+  --color-outline-hairline: #DDD7CB;
+  --color-outline-soft: #E2DFD7;
+  --color-outline-interactive: #C8C0B2;
+
+  /* Strictly Monotonic Numbered Cobalt Scale */
+  --color-cobalt-950: #0C142E;
+  --color-cobalt-900: #13214C;
+  --color-cobalt-800: #1B306E;
+  --color-cobalt-700: #223F96;
+  --color-cobalt-650: #2849AB;
+  --color-cobalt-600: #3157C8;
+  --color-cobalt-400: #5E80DD;
+  --color-cobalt-200: #B5C7F2;
+  --color-cobalt-100: #E2EAFA;
+  --color-cobalt-50: #F2F6FD;
+}
+
+:root {
+  --canvas: #F5F3EE;
+  --surface: #FBFBF9;
+  --ink: #1A1917;
+  --text-muted: #5E5B55;
+  --line-soft: #DDD7CB;
+  --accent: #3157C8;
+  --accent-counter: #F0522D;
+}
+
+body {
+  background-color: var(--color-surface-canvas);
+  color: var(--color-content-display);
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.font-serif {
+  font-family: "Instrument Serif", Georgia, Cambria, serif !important;
+}
+
+.font-sans {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+}
+
+@keyframes slideUpFade {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-matrix {
+  animation: slideUpFade 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slideInFromRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInBackdrop {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+/* Editorial interactive list row micro-interactions */
+.hover-row {
+  position: relative;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hover-row .arrow-icon {
+  opacity: 0;
+  transform: translate(-3px, 3px);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hover-row:hover .arrow-icon {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+.hover-row .text-content {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hover-row:hover .text-content {
+  transform: translateX(2px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-matrix,
+  .hover-row,
+  .hover-row .arrow-icon,
+  .hover-row .text-content {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+  }
+}
