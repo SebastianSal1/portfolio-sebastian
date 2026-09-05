@@ -47,8 +47,13 @@ import {
   FigmaIcon,
   RIcon,
   ArenaSimulationIcon,
+  GitIcon,
+  DockerIcon,
+  TableauIcon,
+  NotionIcon,
+  LatexIcon,
+  MatlabIcon,
 } from "./icons/BrandToolIcons";
-
 const PROJECT_IMAGES: Record<string, string> = {
   "proj-ph-1": "/images/explorations/project-placeholder-01.png",
   "proj-ph-2": "/images/explorations/project-placeholder-02.png",
@@ -733,109 +738,193 @@ export function VerticalNarrativeSections({ theme, arrowDesign = "classic" }: Ve
         </div>
 
         {/* =================================================================== */}
-        {/* APPLIED SKILLS & TOOLSET ROW (Real Official Brand SVGs)             */}
+        {/* APPLIED SKILLS & TOOLSET (Box-free Pure Typographic Roster)         */}
         {/* =================================================================== */}
-        <div className="mt-14 pt-8 border-t border-[#DDD7CB]/70">
-          <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 mb-6">
+        <div className="mt-16 pt-2 select-none">
+          <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 mb-8">
             <div>
-              <span className="text-[11px] font-bold uppercase tracking-wider text-[#8C887B]">
+              <span className="text-xs font-bold uppercase tracking-wider text-[#8C887B]">
                 Applied Skills & Toolset
               </span>
-              <h4 className="text-lg font-bold font-serif text-[#1A1917] mt-0.5">
+              <h4 className="text-xl sm:text-2xl font-bold font-serif text-[#1A1917] mt-1 tracking-tight">
                 Technical Stack & Work Software
               </h4>
             </div>
-            <p className="text-xs text-[#7A766D]">
-              Verified proficiency across engineering, modeling, analysis, and strategic communication.
+            <p className="text-xs text-[#7A766D] max-w-[480px]">
+              Verified proficiency across mathematical programming, operational simulation, business intelligence, and strategic design.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-10">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 sm:gap-12 lg:gap-16">
             {/* Cluster 1: Tech & Data */}
-            <div className="space-y-3">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#1A1917]">
-                Tech & Data Architecture
+            <div className="space-y-4">
+              <span className="text-xs font-bold uppercase tracking-wider text-[#1A1917] block pb-1 border-b border-[#DDD7CB]/50">
+                Data & Systems Architecture
               </span>
-              <div className="flex flex-col gap-2">
-                <div className="flex items-center gap-3 p-2.5 rounded-xl bg-white/70 border border-[#DDD7CB]/60 hover:border-[#3157C8]/40 transition-colors">
-                  <PythonIcon className="w-5 h-5 shrink-0" />
+              <div className="space-y-3.5">
+                <div className="flex items-start gap-3 group cursor-default">
+                  <div className="w-8 h-8 rounded-lg bg-black/[0.03] flex items-center justify-center shrink-0 mt-0.5 group-hover:scale-110 transition-transform">
+                    <PythonIcon className="w-4 h-4" />
+                  </div>
                   <div className="flex flex-col">
-                    <span className="text-xs font-bold text-[#1A1917]">Python</span>
-                    <span className="text-[11px] text-[#5E5B55]">PuLP, NumPy, SciPy, Pandas</span>
+                    <span className="text-sm font-bold text-[#1A1917] group-hover:text-[var(--color-primary)] transition-colors">Python</span>
+                    <span className="text-xs text-[#5E5B55]">PuLP, NumPy, SciPy, Pandas</span>
                   </div>
                 </div>
-                <div className="flex items-center gap-3 p-2.5 rounded-xl bg-white/70 border border-[#DDD7CB]/60 hover:border-[#3157C8]/40 transition-colors">
-                  <PostgreSqlIcon className="w-5 h-5 shrink-0" />
+
+                <div className="flex items-start gap-3 group cursor-default">
+                  <div className="w-8 h-8 rounded-lg bg-black/[0.03] flex items-center justify-center shrink-0 mt-0.5 group-hover:scale-110 transition-transform">
+                    <PostgreSqlIcon className="w-4 h-4" />
+                  </div>
                   <div className="flex flex-col">
-                    <span className="text-xs font-bold text-[#1A1917]">PostgreSQL / SQL</span>
-                    <span className="text-[11px] text-[#5E5B55]">Relational Querying & Schema Design</span>
+                    <span className="text-sm font-bold text-[#1A1917] group-hover:text-[var(--color-primary)] transition-colors">PostgreSQL / SQL</span>
+                    <span className="text-xs text-[#5E5B55]">Relational Querying & Schema Design</span>
                   </div>
                 </div>
-                <div className="flex items-center gap-3 p-2.5 rounded-xl bg-white/70 border border-[#DDD7CB]/60 hover:border-[#3157C8]/40 transition-colors">
-                  <RIcon className="w-5 h-5 shrink-0" />
+
+                <div className="flex items-start gap-3 group cursor-default">
+                  <div className="w-8 h-8 rounded-lg bg-black/[0.03] flex items-center justify-center shrink-0 mt-0.5 group-hover:scale-110 transition-transform">
+                    <RIcon className="w-4 h-4" />
+                  </div>
                   <div className="flex flex-col">
-                    <span className="text-xs font-bold text-[#1A1917]">R Computing</span>
-                    <span className="text-[11px] text-[#5E5B55]">Statistical Inference & Regression</span>
+                    <span className="text-sm font-bold text-[#1A1917] group-hover:text-[var(--color-primary)] transition-colors">R Computing</span>
+                    <span className="text-xs text-[#5E5B55]">Statistical Inference & Regression</span>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3 group cursor-default">
+                  <div className="w-8 h-8 rounded-lg bg-black/[0.03] flex items-center justify-center shrink-0 mt-0.5 group-hover:scale-110 transition-transform">
+                    <GitIcon className="w-4 h-4" />
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="text-sm font-bold text-[#1A1917] group-hover:text-[var(--color-primary)] transition-colors">Git & GitHub</span>
+                    <span className="text-xs text-[#5E5B55]">Distributed Version Control & Workflows</span>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3 group cursor-default">
+                  <div className="w-8 h-8 rounded-lg bg-black/[0.03] flex items-center justify-center shrink-0 mt-0.5 group-hover:scale-110 transition-transform">
+                    <DockerIcon className="w-4 h-4" />
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="text-sm font-bold text-[#1A1917] group-hover:text-[var(--color-primary)] transition-colors">Docker</span>
+                    <span className="text-xs text-[#5E5B55]">Containerized Engineering Environments</span>
                   </div>
                 </div>
               </div>
             </div>
 
             {/* Cluster 2: Modeling & Analysis */}
-            <div className="space-y-3">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#1A1917]">
+            <div className="space-y-4">
+              <span className="text-xs font-bold uppercase tracking-wider text-[#1A1917] block pb-1 border-b border-[#DDD7CB]/50">
                 Modeling & Operational Analysis
               </span>
-              <div className="flex flex-col gap-2">
-                <div className="flex items-center gap-3 p-2.5 rounded-xl bg-white/70 border border-[#DDD7CB]/60 hover:border-[#3157C8]/40 transition-colors">
-                  <ExcelIcon className="w-5 h-5 shrink-0" />
+              <div className="space-y-3.5">
+                <div className="flex items-start gap-3 group cursor-default">
+                  <div className="w-8 h-8 rounded-lg bg-black/[0.03] flex items-center justify-center shrink-0 mt-0.5 group-hover:scale-110 transition-transform">
+                    <ExcelIcon className="w-4 h-4" />
+                  </div>
                   <div className="flex flex-col">
-                    <span className="text-xs font-bold text-[#1A1917]">Microsoft Excel / VBA</span>
-                    <span className="text-[11px] text-[#5E5B55]">DCF Valuation & Sensitivity Analysis</span>
+                    <span className="text-sm font-bold text-[#1A1917] group-hover:text-[var(--color-primary)] transition-colors">Microsoft Excel / VBA</span>
+                    <span className="text-xs text-[#5E5B55]">Financial Modeling, DCF & Sensitivity</span>
                   </div>
                 </div>
-                <div className="flex items-center gap-3 p-2.5 rounded-xl bg-white/70 border border-[#DDD7CB]/60 hover:border-[#3157C8]/40 transition-colors">
-                  <PowerBiIcon className="w-5 h-5 shrink-0" />
+
+                <div className="flex items-start gap-3 group cursor-default">
+                  <div className="w-8 h-8 rounded-lg bg-black/[0.03] flex items-center justify-center shrink-0 mt-0.5 group-hover:scale-110 transition-transform">
+                    <PowerBiIcon className="w-4 h-4" />
+                  </div>
                   <div className="flex flex-col">
-                    <span className="text-xs font-bold text-[#1A1917]">Microsoft Power BI</span>
-                    <span className="text-[11px] text-[#5E5B55]">Interactive Business Intelligence</span>
+                    <span className="text-sm font-bold text-[#1A1917] group-hover:text-[var(--color-primary)] transition-colors">Microsoft Power BI</span>
+                    <span className="text-xs text-[#5E5B55]">Interactive Business Intelligence</span>
                   </div>
                 </div>
-                <div className="flex items-center gap-3 p-2.5 rounded-xl bg-white/70 border border-[#DDD7CB]/60 hover:border-[#3157C8]/40 transition-colors">
-                  <ArenaSimulationIcon className="w-5 h-5 shrink-0" />
+
+                <div className="flex items-start gap-3 group cursor-default">
+                  <div className="w-8 h-8 rounded-lg bg-black/[0.03] flex items-center justify-center shrink-0 mt-0.5 group-hover:scale-110 transition-transform">
+                    <ArenaSimulationIcon className="w-4 h-4" />
+                  </div>
                   <div className="flex flex-col">
-                    <span className="text-xs font-bold text-[#1A1917]">Arena Simulation</span>
-                    <span className="text-[11px] text-[#5E5B55]">Discrete-Event Bottleneck Modeling</span>
+                    <span className="text-sm font-bold text-[#1A1917] group-hover:text-[var(--color-primary)] transition-colors">Arena Simulation</span>
+                    <span className="text-xs text-[#5E5B55]">Stochastic Bottleneck Modeling</span>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3 group cursor-default">
+                  <div className="w-8 h-8 rounded-lg bg-black/[0.03] flex items-center justify-center shrink-0 mt-0.5 group-hover:scale-110 transition-transform">
+                    <TableauIcon className="w-4 h-4" />
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="text-sm font-bold text-[#1A1917] group-hover:text-[var(--color-primary)] transition-colors">Tableau</span>
+                    <span className="text-xs text-[#5E5B55]">Data Storytelling & KPI Dashboards</span>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3 group cursor-default">
+                  <div className="w-8 h-8 rounded-lg bg-black/[0.03] flex items-center justify-center shrink-0 mt-0.5 group-hover:scale-110 transition-transform">
+                    <MatlabIcon className="w-4 h-4" />
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="text-sm font-bold text-[#1A1917] group-hover:text-[var(--color-primary)] transition-colors">MATLAB</span>
+                    <span className="text-xs text-[#5E5B55]">Matrix Computations & Dynamic Systems</span>
                   </div>
                 </div>
               </div>
             </div>
 
             {/* Cluster 3: Strategy & Design */}
-            <div className="space-y-3">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#1A1917]">
-                Strategy & Presentation Design
+            <div className="space-y-4">
+              <span className="text-xs font-bold uppercase tracking-wider text-[#1A1917] block pb-1 border-b border-[#DDD7CB]/50">
+                Strategy & Product Communication
               </span>
-              <div className="flex flex-col gap-2">
-                <div className="flex items-center gap-3 p-2.5 rounded-xl bg-white/70 border border-[#DDD7CB]/60 hover:border-[#3157C8]/40 transition-colors">
-                  <PowerPointIcon className="w-5 h-5 shrink-0" />
+              <div className="space-y-3.5">
+                <div className="flex items-start gap-3 group cursor-default">
+                  <div className="w-8 h-8 rounded-lg bg-black/[0.03] flex items-center justify-center shrink-0 mt-0.5 group-hover:scale-110 transition-transform">
+                    <PowerPointIcon className="w-4 h-4" />
+                  </div>
                   <div className="flex flex-col">
-                    <span className="text-xs font-bold text-[#1A1917]">Microsoft PowerPoint</span>
-                    <span className="text-[11px] text-[#5E5B55]">Executive Board Decks & Storylining</span>
+                    <span className="text-sm font-bold text-[#1A1917] group-hover:text-[var(--color-primary)] transition-colors">Microsoft PowerPoint</span>
+                    <span className="text-xs text-[#5E5B55]">Executive Board Decks & Storylining</span>
                   </div>
                 </div>
-                <div className="flex items-center gap-3 p-2.5 rounded-xl bg-white/70 border border-[#DDD7CB]/60 hover:border-[#3157C8]/40 transition-colors">
-                  <WordIcon className="w-5 h-5 shrink-0" />
+
+                <div className="flex items-start gap-3 group cursor-default">
+                  <div className="w-8 h-8 rounded-lg bg-black/[0.03] flex items-center justify-center shrink-0 mt-0.5 group-hover:scale-110 transition-transform">
+                    <WordIcon className="w-4 h-4" />
+                  </div>
                   <div className="flex flex-col">
-                    <span className="text-xs font-bold text-[#1A1917]">Microsoft Word / Docs</span>
-                    <span className="text-[11px] text-[#5E5B55]">Institutional Policy & Advisory Briefs</span>
+                    <span className="text-sm font-bold text-[#1A1917] group-hover:text-[var(--color-primary)] transition-colors">Microsoft Word / Docs</span>
+                    <span className="text-xs text-[#5E5B55]">Institutional Policy & Advisory Briefs</span>
                   </div>
                 </div>
-                <div className="flex items-center gap-3 p-2.5 rounded-xl bg-white/70 border border-[#DDD7CB]/60 hover:border-[#3157C8]/40 transition-colors">
-                  <FigmaIcon className="w-5 h-5 shrink-0" />
+
+                <div className="flex items-start gap-3 group cursor-default">
+                  <div className="w-8 h-8 rounded-lg bg-black/[0.03] flex items-center justify-center shrink-0 mt-0.5 group-hover:scale-110 transition-transform">
+                    <FigmaIcon className="w-4 h-4" />
+                  </div>
                   <div className="flex flex-col">
-                    <span className="text-xs font-bold text-[#1A1917]">Figma</span>
-                    <span className="text-[11px] text-[#5E5B55]">UI/UX Design Systems & Wireframing</span>
+                    <span className="text-sm font-bold text-[#1A1917] group-hover:text-[var(--color-primary)] transition-colors">Figma</span>
+                    <span className="text-xs text-[#5E5B55]">UI/UX Design Systems & Interactive Prototypes</span>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3 group cursor-default">
+                  <div className="w-8 h-8 rounded-lg bg-black/[0.03] flex items-center justify-center shrink-0 mt-0.5 group-hover:scale-110 transition-transform">
+                    <NotionIcon className="w-4 h-4" />
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="text-sm font-bold text-[#1A1917] group-hover:text-[var(--color-primary)] transition-colors">Notion</span>
+                    <span className="text-xs text-[#5E5B55]">Operational Systems & Knowledge Architecture</span>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3 group cursor-default">
+                  <div className="w-8 h-8 rounded-lg bg-black/[0.03] flex items-center justify-center shrink-0 mt-0.5 group-hover:scale-110 transition-transform">
+                    <LatexIcon className="w-4 h-4" />
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="text-sm font-bold text-[#1A1917] group-hover:text-[var(--color-primary)] transition-colors">LaTeX</span>
+                    <span className="text-xs text-[#5E5B55]">Publication-Grade Mathematical Typesetting</span>
                   </div>
                 </div>
               </div>

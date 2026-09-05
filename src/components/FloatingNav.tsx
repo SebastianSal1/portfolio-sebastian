@@ -89,13 +89,25 @@ export function FloatingNav({ theme }: FloatingNavProps) {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [mobileMenuOpen]);
 
+  const isHomepage = pathname === "/";
   const navLinks: NavItem[] = [
-    { label: "Experience", href: "/experience" },
-    { label: "Projects", href: "/projects" },
-    { label: "Competitions", href: "/competitions" },
-    { label: "Academics", href: "/education" },
+    { label: "Experience", href: isHomepage ? "#experience" : "/experience" },
+    { label: "Projects", href: isHomepage ? "#projects" : "/projects" },
+    { label: "Competitions", href: isHomepage ? "#competitions" : "/competitions" },
+    { label: "Leadership", href: isHomepage ? "#leadership" : "/experience#leadership" },
+    { label: "Academics", href: isHomepage ? "#academics" : "/education" },
   ];
 
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (href.startsWith("#")) {
+      e.preventDefault();
+      const el = document.querySelector(href);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+        if (mobileMenuOpen) setMobileMenuOpen(false);
+      }
+    }
+  };
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-40 flex flex-col items-center px-4 pt-3.5 sm:pt-4 pointer-events-none select-none transition-all duration-300 ${
@@ -118,22 +130,25 @@ export function FloatingNav({ theme }: FloatingNavProps) {
             ? "0 10px 28px -4px rgba(26, 25, 23, 0.08), 0 2px 6px rgba(26, 25, 23, 0.03)"
             : "0 2px 12px rgba(26, 25, 23, 0.04), 0 1px 3px rgba(26, 25, 23, 0.02)",
         }}
-        className="pointer-events-auto flex items-center justify-between md:justify-center gap-3 sm:gap-5 lg:gap-6 px-4 sm:px-5 py-1.5 sm:py-2 rounded-full w-full md:w-auto max-w-[94vw] transition-all duration-300 backdrop-blur-md border shadow-xs"
+        className="pointer-events-auto flex items-center justify-between md:justify-center gap-2.5 sm:gap-4 lg:gap-5 px-3.5 sm:px-5 py-1.5 sm:py-2 rounded-full w-full md:w-auto max-w-[96vw] transition-all duration-300 backdrop-blur-md border shadow-xs"
       >
         {/* Left: Full Brand Identity (Always routes to home /) */}
         <Link
           href="/"
+          onClick={(e) => {
+            if (isHomepage) {
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }
+          }}
           style={{ color: theme.textPrimary }}
           className="font-semibold tracking-tight text-xs sm:text-[13px] hover:text-[var(--color-primary)] transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-focus-ring,#244BC0)] rounded-full shrink-0 py-0.5"
         >
           <span>Sebastian Salutare</span>
         </Link>
 
-        {/* Subtle Vertical Divider (Desktop) */}
-        <div className="hidden md:block w-px h-3.5 bg-[#DDD7CB]/80 shrink-0" aria-hidden="true" />
-
         {/* Center: Desktop/Tablet Route Navigation (Hidden on small mobile < 768px) */}
-        <div className="hidden md:flex items-center gap-1 text-xs">
+        <div className="hidden md:flex items-center gap-0.5 lg:gap-1 text-xs">
           {navLinks.map((link) => {
             const isActive = pathname === link.href;
             const isHovered = activeHover === link.label;
@@ -142,6 +157,7 @@ export function FloatingNav({ theme }: FloatingNavProps) {
               <Link
                 key={link.label}
                 href={link.href}
+                onClick={(e) => handleNavClick(e, link.href)}
                 onMouseEnter={() => setActiveHover(link.label)}
                 onMouseLeave={() => setActiveHover(null)}
                 style={{
@@ -168,9 +184,6 @@ export function FloatingNav({ theme }: FloatingNavProps) {
             );
           })}
         </div>
-
-        {/* Subtle Vertical Divider (Desktop) */}
-        <div className="hidden md:block w-px h-3.5 bg-[#DDD7CB]/80 shrink-0" aria-hidden="true" />
 
         {/* Right: Mobile Menu Toggle + CV Action */}
         <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
@@ -206,13 +219,13 @@ export function FloatingNav({ theme }: FloatingNavProps) {
           className="pointer-events-auto md:hidden w-full max-w-[340px] mt-2 p-2 rounded-2xl bg-white/95 backdrop-blur-md border border-[#DDD7CB] shadow-xl flex flex-col gap-1 transition-all duration-200 animate-in fade-in slide-in-from-top-2"
         >
           {navLinks.map((link) => {
-            const isActive = pathname === link.href;
+            const isActive = isHomepage ? false : pathname === link.href;
 
             return (
               <Link
                 key={link.label}
                 href={link.href}
-                onClick={() => setMobileMenuOpen(false)}
+                onClick={(e) => handleNavClick(e, link.href)}
                 className={`flex items-center justify-between px-4 py-2.5 rounded-xl text-sm font-medium transition-colors ${
                   isActive
                     ? "bg-[var(--color-primary)]/[0.12] text-[var(--color-primary)] font-semibold border border-[var(--color-primary)]/20 shadow-2xs"
