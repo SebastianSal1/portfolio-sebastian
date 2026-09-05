@@ -19,8 +19,8 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL("https://portfolio-sebastiansal.vercel.app"),
   title: {
-    default: "Sebastian Salutare – Strategy, Operations & Technology",
-    template: "%s – Sebastian Salutare",
+    default: "Sebastian – Portfolio",
+    template: "%s – Sebastian",
   },
   description:
     "Fresh graduate in Industrial Engineering from Institut Teknologi Bandung (ITB). Open to interesting opportunities and available to any roles across strategy, finance, operations, and technology.",
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://portfolio-sebastiansal.vercel.app",
     siteName: "Sebastian Salutare Portfolio",
-    title: "Sebastian Salutare – Strategy, Operations & Technology",
+    title: "Sebastian – Portfolio",
     description:
       "Fresh graduate in Industrial Engineering from Institut Teknologi Bandung (ITB). Open to interesting opportunities and available to any roles across strategy, finance, operations, and technology.",
     images: [
@@ -56,13 +56,17 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Sebastian Salutare – Strategy, Operations & Technology",
+    title: "Sebastian – Portfolio",
     description:
       "Fresh graduate in Industrial Engineering from Institut Teknologi Bandung (ITB). Open to interesting opportunities and available to any roles across strategy, finance, operations, and technology.",
     images: ["/og-image.png"],
   },
   icons: {
-    icon: "/favicon.ico",
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico", sizes: "any" },
+    ],
+    apple: "/apple-touch-icon.png",
   },
 };
 export default function RootLayout({
